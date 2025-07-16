@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Tracker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  h1, h2 {
+    color: #333;
+  }
+  #summary, #taskList {
+    margin-top: 20px;
+  } 
+  #taskList li {
+    margin: 5px 0;
+  }
+  #viewReport {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  #viewReport:hover {
+      
+    background-color: #0056b3;
+  }
+    #report {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        display: none; /* Initially hidden */
+    }
+    #report h2 {
+        margin-top: 0;
+    }
+    #summary p {
+        margin: 5px 0;
+    }
+    #taskList {
+        list-style-type: none;
+        padding: 0;
+    }
+    #taskList li {
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+    #taskList li.completed {
+        background-color: #d4edda;
+        text-decoration: line-through;
+    }
+    #taskList li.in-progress {
+            background-color: #fff3cd;
+        }
+    #taskList li.not-started {
+            background-color: #f8d7da;
+        }
+    #taskList li {
+        padding: 10px;
+        border-radius: 5px;
+    }
+    #taskList li.completed {
+            background-color: #d4edda; /* Light green for completed tasks */
+            text-decoration: line-through;
+        }
+
+    #taskList li.in-progress {
+            background-color: #9d822a; /* Light yellow for in-progress tasks */
+        }
+    #taskList li.not-started {
+            background-color: #881c25; /* Light red for not started tasks */
+        }
+    #taskList li {
+        padding: 10px;
+        border-radius: 5px;
+    }
+    #taskList li.completed {
+            background-color: #169c36; /* Light green for completed tasks */
+            text-decoration: line-through;
+        }
+    #taskList li.in-progress {
+            background-color: #c39b16; /* Light yellow for in-progress tasks */
+        }
+    #taskList li.not-started {
+            background-color: #53191d; /* Light red for not started tasks */
+        }
+    #taskList li {
+        padding: 10px;
+        border-radius: 5px;
+    }
+    #taskList li.completed {
+            background-color: #d4edda; /* Light green for completed tasks */
+            text-decoration: line-through;
+        }
+    #taskList li.in-progress {
+            background-color: #fff3cd; /* Light yellow for in-progress tasks */
+        }
+    #taskList li.not-started {
+            background-color: #f8d7da; /* Light red for not started tasks */
+        }
+    #taskList li {
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div id="report"></div>
+    <script src="popup.js"></script>
+    <h2>Today's Productivity Summary</h2>
+    <div id="summary">
+      <p id="tasksCompleted">Tasks Completed: 0</p>
+      <p id="timeSpent">Time Spent: 0 minutes</p>
+      <p id="productivityScore">Productivity Score: 0%</p>
+    </div>
+    <h2>Detailed Report</h2>
+    <ul id="taskList"></ul>     
+    <h2>Daily Report</h2>
+    <p>This report summarizes your productivity for today.</p>    
+    <p>It includes the number of tasks completed, time spent on each task, and overall productivity score.</p>
+    <p>Click the button below to view your detailed report.</p>
+    <button id="viewReport">View Report</button>
+    <style>
+      #report {
+        display: none;
+      }
+    </style>
+  <h1>Daily Report</h1>
+    <p>This report summarizes your productivity for today.</p>
+    <p>It includes the number of tasks completed, time spent on each task, and overall productivity score.</p>  
+    <p>Click the button below to view your detailed report.</p>
+    <button id="viewReport">View Report</button>
+    <script src="popup.js"></script>
+    <style>
+      #report {
+        display: none;
+      }
+    </style>
+    <script>
+      document.getElementById('viewReport').addEventListener('click', function() {
+        document.getElementById('report').style.display = 'block';
+      });
+    </script>
+    <h2>Today's Productivity Summary</h2>
+    <div id="summary">
+      <p id="tasksCompleted">Tasks Completed: 0</p>
+      <p id="timeSpent">Time Spent: 0 minutes</p>
+      <p id="productivityScore">Productivity Score: 0%</p>
+    </div>
+    <h2>Detailed Report</h2>
+    <ul id="taskList"></ul>
+    <h2>Daily Report</h2>
+    <p>This report summarizes your productivity for today.</p>
+    <p>It includes the number of tasks completed, time spent on each task, and overall productivity score.</p>
+    <p>Click the button below to view your detailed report.</p>
+    <button id="viewReport">View Report</button>
+    <style>
+        #report {
+            display: none;
+        }
+
+    </style>
+    <script>    
+        document.getElementById('viewReport').addEventListener('click', function() {
+        
+            document.getElementById('report').style.display = 'block';
+            });
+    </script>
+    })
+  <div id="report"></div>
+  <script src="popup.js"></script>
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Fetch the daily report from the background script
+    chrome.runtime.sendMessage({ action: 'getDailyReport' }, function(response) {
+      if (response && response.report) {
+        document.getElementById('report').innerText = response.report;
+      } else {
+        document.getElementById('report').innerText = 'No report available for today.';
+      }
+    });
+  });
+</script>
+</html>
